@@ -20,8 +20,9 @@ public class Splash extends JFrame {
         setLayout(null);
         setVisible(true);
         try{
-            Thread.sleep(5000);
+            Thread.sleep(1000);
             setVisible(false);
+            new Login();
         }catch(Exception e){
             e.printStackTrace();
         }
