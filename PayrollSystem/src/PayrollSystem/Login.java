@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
+
 public class Login extends JFrame implements ActionListener {
     JTextField tusername;
     JPasswordField tpassword;
@@ -51,7 +52,7 @@ public class Login extends JFrame implements ActionListener {
         add(imgg);
 
 
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("Images/effective.jpg"));
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("Images/Loginbackground.jpg"));
         Image i2 = i1.getImage().getScaledInstance(600,300,Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel img = new JLabel(i3);
@@ -66,9 +67,25 @@ public class Login extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e){
         if (e.getSource() == login){
+            try {
+                String username = tusername.getText();
+                String password = tpassword.getText();
 
+                Connector conn = new Connector();
+                String query = "select * from login where username = '"+ username +"' and password = '"+password+"'";
+                ResultSet resultSet = conn.statement.executeQuery(query);
+                if (resultSet.next()){
+                    setVisible(false);
+
+                }else {
+                    JOptionPane.showMessageDialog(null,"Invalid username or password");
+                }
+
+            }catch (Exception E){
+                E.printStackTrace();
+            }
         } else if (e.getSource() == back) {
-            System.exit(90);
+            System.exit(9211);
         }
     }
     public static void main(String[] args) {
