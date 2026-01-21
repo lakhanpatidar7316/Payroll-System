@@ -71,12 +71,12 @@ public class Login extends JFrame implements ActionListener {
                 String username = tusername.getText();
                 String password = tpassword.getText();
 
-                Connector conn = new Connector();
-                String query = "select * from login where username = '"+ username +"' and password = '"+password+"'";
-                ResultSet resultSet = conn.statement.executeQuery(query);
+                Connector con = new Connector();
+                String query = "select * from login where username = '"+ username +"' and password = '"+ password +"'";
+                ResultSet resultSet = con.statement.executeQuery(query);
                 if (resultSet.next()){
                     setVisible(false);
-
+                   new MainFile();
                 }else {
                     JOptionPane.showMessageDialog(null,"Invalid username or password");
                 }
