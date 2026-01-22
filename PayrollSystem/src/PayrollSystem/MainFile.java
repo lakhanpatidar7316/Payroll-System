@@ -1,4 +1,5 @@
 package PayrollSystem;
+
 import javax.swing.*;
 import javax.swing.JFrame;
 import java.awt.*;
@@ -8,7 +9,7 @@ import java.awt.event.ActionListener;
 public class MainFile extends JFrame {
 
      MainFile() {
-         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/home.jpg"));
+         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("Images/poster.jpg"));
          Image i2 = i1.getImage().getScaledInstance(1120,630,Image.SCALE_DEFAULT);
          ImageIcon i3 = new ImageIcon(i2);
          JLabel img = new JLabel(i3);
@@ -40,8 +41,8 @@ public class MainFile extends JFrame {
          view.addActionListener(new ActionListener() {
              @Override
              public void actionPerformed(ActionEvent e) {
-
-
+                new ViewEmployee();
+                 setVisible(false);
              }
          });
          img.add(view);
@@ -53,7 +54,7 @@ public class MainFile extends JFrame {
          rem.addActionListener(new ActionListener() {
              @Override
              public void actionPerformed(ActionEvent e) {
-
+               new RemoveEmployee();
              }
          });
          img.add(rem);
